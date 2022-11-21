@@ -5,10 +5,14 @@ Escuela de Formación de Tecnólogos
 
 
 Nombre: Johan Hernan Quinatoa Tipantocta
+
 Materia: Aplicaciones Móviles
+
 Fecha: 20/11/2022
 
+
 Deber
+
 Implementar una aplicación que permita tomar fotos con Ionic, únicamente PWA Entregable: link de github con el código de la aplicación y captura con la aplicación funcionando.
 
 Funcionamiento de la aplicación
