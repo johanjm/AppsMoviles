@@ -13,7 +13,7 @@
   <ion-toolbar>
     <ion-title class="centrado">DATOS</ion-title>
   </ion-toolbar>
-  <form>
+  <form #formulario="ngForm">
     <ion-row>
       <ion-col>
         <ion-item>
@@ -37,7 +37,7 @@
       <ion-col>
         <ion-item>
           <ion-label floating> Miembros de la familia </ion-label>
-          <ion-input type="number" name="nfamilia" placeholder="0" min=0 max=10 maxlength="2" required ngModel>
+          <ion-input type="number" name="miembros" placeholder="0" min=0 max=10 maxlength="2" required ngModel>
           </ion-input>
         </ion-item>
       </ion-col>
@@ -57,25 +57,24 @@
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label floating> Ingrese una foto </ion-label>
-          <ion-col>
-            <ion-button expand="block"
-                        (click)="changeImage()"> Tomar Foto y Guardar </ion-button>
-          </ion-col>
+          <ion-toolbar>
+            <ion-title>Foto de la vivienda</ion-title>
+          </ion-toolbar>
+          <div class="preview">
+            <ion-avatar>
+              <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
+            </ion-avatar>
+          </div>
+          
         </ion-item>
       </ion-col>
     </ion-row>
-
   </form>
-  
-  <ion-toolbar>
-    <ion-title class="centrado">Foto de la vivienda</ion-title>
-  </ion-toolbar>
-  <div class="preview">
-    <ion-avatar>
-      <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
-    </ion-avatar>
-  </div>
+
+  <ion-col>
+    <ion-button expand="block"
+                (click)="changeImage(formulario)"> Tomar Foto y Guardar </ion-button>
+  </ion-col>
 
   
 

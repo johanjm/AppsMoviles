@@ -4,8 +4,8 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { AvatarService } from '../services/avatar.service';
-
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +16,9 @@ export class HomePage {
   profile = null;
   latitud: number;
   longitud: number;
+  nombre: string;
+  cedula: string;
+  miembros: number;
 
   constructor(
     private avatarService: AvatarService,
@@ -43,10 +46,10 @@ export class HomePage {
     this.router.navigateByUrl('/', { replaceUrl: true });
   }
 
-  async changeImage() {
-    const nombre="ame"
-    const cedula="1234"
-    const miembro="3"
+  async changeImage(formulario: NgForm) {
+    const nombre=formulario.value.nombre
+    const cedula=formulario.value.cedula
+    const miembros=formulario.value.miembros
     const image = await Camera.getPhoto({
       quality: 90,
       allowEditing: false,
@@ -58,13 +61,13 @@ export class HomePage {
       const loading = await this.loadingController.create();
       await loading.present();
 
-      const result = await this.avatarService.uploadImage(image,nombre,cedula,miembro,this.latitud,this.longitud);
+      const result = await this.avatarService.uploadImage(image,nombre,cedula,miembros,this.latitud,this.longitud);
       loading.dismiss();
 
       if (!result) {
         const alert = await this.alertController.create({
           header: 'Upload failed',
-          message: 'There was a problem uploading your avatar.',
+          message: 'Los datos no están llenos',
           buttons: ['OK'],
         });
         await alert.present();
