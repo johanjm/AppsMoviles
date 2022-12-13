@@ -1,10 +1,10 @@
 # AppsMoviles Prueba1 2022B
 
-#Integrantes:
+# Integrantes
 Johan Quinatoa
 Daniel Flores
 Elena Pérez
 
 
-#Video:
+# Video
 https://youtu.be/DEI23_3vOWo
